@@ -1,296 +1,20 @@
-const pokemonList = [
-  {
-    id: 1,
-    name: 'bulbasaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-    },
-    height: 7,
-    weight: 69
-  },
-  {
-    id: 2,
-    name: 'ivysaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-    },
-    height: 10,
-    weight: 130
-  },
-  {
-    id: 3,
-    name: 'venusaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png'
-    },
-    height: 20,
-    weight: 1000
-  },
-  {
-    id: 4,
-    "name": "charmander",
-    types: [
-      {
-        "slot": 1,
-        "type": {
-          "name": "fire",
-          "url": "https://pokeapi.co/api/v2/type/10/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png'
-    },
-    "height": 6,
-    "weight": 85
-  },
-  {
-    id: 1,
-    name: 'bulbasaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-    },
-    height: 7,
-    weight: 69
-  },
-  {
-    id: 2,
-    name: 'ivysaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-    },
-    height: 10,
-    weight: 130
-  },
-  {
-    id: 3,
-    name: 'venusaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png'
-    },
-    height: 20,
-    weight: 1000
-  },
-  {
-    id: 4,
-    "name": "charmander",
-    types: [
-      {
-        "slot": 1,
-        "type": {
-          "name": "fire",
-          "url": "https://pokeapi.co/api/v2/type/10/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png'
-    },
-    "height": 6,
-    "weight": 85
-  },
-  {
-    id: 1,
-    name: 'bulbasaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-    },
-    height: 7,
-    weight: 69
-  },
-  {
-    id: 2,
-    name: 'ivysaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-    },
-    height: 10,
-    weight: 130
-  },
-  {
-    id: 3,
-    name: 'venusaur',
-    types: [
-      {
-        slot: 1,
-        type: {
-          name: "grass",
-          url: "https://pokeapi.co/api/v2/type/12/"
-        }
-      },
-      {
-        slot: 2,
-        type: {
-          name: "poison",
-          url: "https://pokeapi.co/api/v2/type/4/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png'
-    },
-    height: 20,
-    weight: 1000
-  },
-  {
-    id: 4,
-    "name": "charmander",
-    types: [
-      {
-        "slot": 1,
-        "type": {
-          "name": "fire",
-          "url": "https://pokeapi.co/api/v2/type/10/"
-        }
-      }
-    ],
-    sprite: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png'
-    },
-    "height": 6,
-    "weight": 85
-  }
-]
+import pokemonList from "./data";
+import { createElement } from "./dom";
 
 const createPokemonCardTypes = (pokemon) => {
-  const pokemonCardTypesElement = document.createElement('ul')
-  for (let index = 0; index < pokemon.types.length; index++) {
-    const type = pokemon.types[index]
-    const listElement = document.createElement('li')
-    listElement.textContent = type.type.name
-    pokemonCardTypesElement.appendChild(listElement)
-  }
+  const childs = pokemon.types.map((row) => {
+    return createElement("li", {
+      textContent: row.type.name,
+    });
+  });
 
-  return pokemonCardTypesElement
-}
+  const pokemonCardTypesElement = createElement("ul", {
+    classList: ["pokemon-card-types"],
+    childs,
+  });
+
+  return pokemonCardTypesElement;
+};
 
 /*
 Para melhorar:
@@ -302,52 +26,57 @@ Para melhorar:
 */
 
 const main = () => {
-  const list = document.querySelector('#pokemons-list')
+  const list = document.querySelector("#pokemons-list");
 
   for (let index = 0; index < pokemonList.length; index++) {
-    const pokemon = pokemonList[index]
+    const pokemon = pokemonList[index];
 
-    const listElement = document.createElement('li')
-    listElement.classList.add('pokemon-card-item')
+    const pokemonCardIdentifier = createElement("p", {
+      classList: ["pokemon-card-id"],
+      textContent: `#${pokemon.id}`,
+    });
 
-    const pokemonCard = document.createElement('article')
+    const pokemonCardTypesElement = createPokemonCardTypes(pokemon);
+    const pokemonCardTitle = createElement("h3", {
+      textContent: pokemon.name,
+    });
 
-    pokemonCard.classList.add('pokemon-card')
+    const pokemanCardImage = createElement("img", {
+      src: pokemon.sprite.front_default,
+    });
 
-    const pokemonCardHeader = document.createElement('header')
-    const pokemonCardIdentifier = document.createElement('p')
-    pokemonCardIdentifier.classList.add('pokemon-card-id')
-    pokemonCardIdentifier.textContent = `#${pokemon.id}`
+    const pokemonCardHeight = createElement("p", {
+      textContent: pokemon.height,
+    });
+    const pokemonCardWeight = createElement("p", {
+      textContent: pokemon.weight,
+    });
 
-    const pokemonCardTypesElement = createPokemonCardTypes(pokemon)
-    pokemonCardTypesElement.classList.add('pokemon-card-types')
-    const pokemonCardTitle = document.createElement('h3')
-    pokemonCardTitle.textContent = pokemon.name
+    const pokemonCardHeader = createElement("header", {
+      childs: [pokemonCardIdentifier, pokemonCardTypesElement],
+    });
 
-    const pokemanCardImage = document.createElement('img')
-    pokemanCardImage.src = pokemon.sprite.front_default
+    const pokemonCardFooter = createElement("footer", {
+      childs: [pokemonCardHeight, pokemonCardWeight],
+    });
 
-    const pokemonCardFooter = document.createElement('footer')
-    const pokemonCardHeight = document.createElement('p')
-    pokemonCardHeight.textContent = pokemon.height
-    const pokemonCardWeight = document.createElement('p')
-    pokemonCardWeight.textContent = pokemon.weight
+    const pokemonCard = createElement("article", {
+      classList: ["pokemon-card"],
+      childs: [
+        pokemonCardHeader,
+        pokemonCardTitle,
+        pokemanCardImage,
+        pokemonCardFooter,
+      ],
+    });
 
-    pokemonCardHeader.appendChild(pokemonCardIdentifier)
-    pokemonCardHeader.appendChild(pokemonCardTypesElement)
+    const listElement = createElement("li", {
+      classList: ["pokemon-card-item"],
+      childs: [pokemonCard],
+    });
 
-    pokemonCardFooter.appendChild(pokemonCardHeight)
-    pokemonCardFooter.appendChild(pokemonCardWeight)
-
-    pokemonCard.appendChild(pokemonCardHeader)
-    pokemonCard.appendChild(pokemonCardTitle)
-    pokemonCard.appendChild(pokemanCardImage)
-    pokemonCard.appendChild(pokemonCardFooter)
-
-    listElement.appendChild(pokemonCard)
-
-    list?.appendChild(listElement)
+    list?.appendChild(listElement);
   }
-}
+};
 
-document.addEventListener('DOMContentLoaded', main)
+document.addEventListener("DOMContentLoaded", main);

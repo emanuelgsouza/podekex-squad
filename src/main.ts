@@ -71,7 +71,8 @@ const main = () => {
     });
 
     const listElement = createElement("li", {
-      classList: ["pokemon-card-item"],
+      classList: ["pokemon-card-item", `pokemon-${pokemon.name}`],
+      id: `pokemon-index-${index}`,
       childs: [pokemonCard],
     });
 

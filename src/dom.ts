@@ -15,6 +15,10 @@ const createElement = (elName, opts: any = {}) => {
     el.src = opts.src;
   }
 
+  if (opts.id) {
+    el.id = opts.id;
+  }
+
   if (opts.childs) {
     opts.childs.forEach((child) => {
       el.appendChild(child);

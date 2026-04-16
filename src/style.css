@@ -1,5 +1,7 @@
 :root {
-  --white: #FAF9F6;
+  --white: #fff;
+  --off-white: #f8fafcb3;
+  --gray: #f7f9fc;
   --text-color: #0f172a;
   --lateral-spacing: 1.5rem;
   --accent-color: #bc000a;
@@ -27,7 +29,7 @@ html {
 
 .header {
   padding: 1rem var(--lateral-spacing);
-  background-color: var(--white);
+  background-color: var(--off-white);
 }
 
 .header .container {
@@ -57,6 +59,11 @@ html {
   min-width: 500px;
 }
 
+.section {
+  background-color: var(--gray);
+  padding: 1rem 0;
+}
+
 .section .container {
   padding: 1rem var(--lateral-spacing);
 }
@@ -68,5 +75,80 @@ html {
 .section .section-subtitle {
   font-size: 2rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   color: var(--accent-color);
+}
+
+#pokemons-list,
+#pokemons-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+#pokemons-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.pokemon-card-item {
+  flex: 1;
+}
+
+.pokemon-card {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.pokemon-card header,
+.pokemon-card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokemon-card header {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.pokemon-card-id {
+  color: #94a3b8;
+  font-weight: bold;
+}
+
+.pokemon-card-types {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pokemon-card-types li {
+  padding: 0.3rem;
+  background-color: green;
+  color: var(--white);
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.pokemon-card h3 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+
+.pokemon-card img {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 0;
+}
+
+.pokemon-card footer {
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--gray);
+  padding-top: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
 }

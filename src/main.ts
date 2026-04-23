@@ -6,6 +6,14 @@ import {
   createImg,
 } from "./dom";
 
+const DELAY_DEFAULT = 2000;
+
+const FORM$ = document.querySelector<HTMLFormElement>("#search-form");
+const FORM_INPUT$ = document.querySelector<HTMLInputElement>("#search-input");
+const POKEMON_LOADING$ =
+  document.querySelector<HTMLParagraphElement>("#pokemon-loading");
+const POKEMON_LIST$ = document.querySelector<HTMLUListElement>("#pokemon-list");
+
 const createPokemonCardTypes = (pokemon) => {
   const childs = pokemon.types.map((row) => {
     return createElement("li", {
@@ -30,8 +38,6 @@ Para melhorar:
 */
 
 const listPokemon = (pokemonList) => {
-  const list = document.querySelector("#pokemon-list");
-
   const fragment = document.createDocumentFragment();
 
   pokemonList.forEach((pokemon, index) => {
@@ -64,46 +70,55 @@ const listPokemon = (pokemonList) => {
         pokemonCardFooter,
       ],
     });
-    fragment.appendChild(createElement("li", {
-      classList: ["pokemon-card-item", `pokemon-${pokemon.name}`],
-      id: `pokemon-index-${index}`,
-      childs: [pokemonCard],
-    }));
+    fragment.appendChild(
+      createElement("li", {
+        classList: ["pokemon-card-item", `pokemon-${pokemon.name}`],
+        id: `pokemon-index-${index}`,
+        childs: [pokemonCard],
+      }),
+    );
   });
 
-  list?.replaceChildren(fragment);
-}
+  POKEMON_LIST$?.replaceChildren(fragment);
+};
 
-const loadingPokemon = (pokemonList) => {
-  const element = document.querySelector<HTMLParagraphElement>('#pokemon-loading')!
-  const list = document.querySelector<HTMLUListElement>('#pokemon-list')!
+const loadingPokemon = (pokemonList, delay = DELAY_DEFAULT) => {
+  if (POKEMON_LIST$) {
+    POKEMON_LIST$.hidden = true;
+  }
 
-  list.hidden = true
-  element.hidden = false
-  
+  if (POKEMON_LOADING$) {
+    POKEMON_LOADING$.hidden = false;
+  }
+
   setTimeout(() => {
-    listPokemon(pokemonList)
-    list.hidden = false
-    element.hidden = true
-  }, 2000)
-}
+    listPokemon(pokemonList);
+    if (POKEMON_LIST$) {
+      POKEMON_LIST$.hidden = false;
+    }
+
+    if (POKEMON_LOADING$) {
+      POKEMON_LOADING$.hidden = true;
+    }
+  }, delay);
+};
+
+const filterPokemon = (searchText) => {
+  const pokemonDataFiltered = pokemonData.filter((pokemon) => {
+    return pokemon.name.includes(searchText);
+  });
+
+  loadingPokemon(pokemonDataFiltered, 1000);
+};
 
 const main = () => {
-  const formSearch = document.querySelector<HTMLFormElement>('#search-form')
+  FORM$?.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  formSearch?.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const input = document.querySelector<HTMLInputElement>('#search-input')
-    const searchText = input?.value
+    filterPokemon(FORM_INPUT$?.value);
+  });
 
-    const pokemonDataFiltered = pokemonData.filter(pokemon => {
-      return pokemon.name.includes(searchText)
-    })
-
-    loadingPokemon(pokemonDataFiltered)
-  })
-
-  loadingPokemon(pokemonData)
+  loadingPokemon(pokemonData);
 };
 
 document.addEventListener("DOMContentLoaded", main);

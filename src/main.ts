@@ -77,10 +77,12 @@ const listarPokemons = (pokemonList) => {
 }
 
 const main = () => {
-  const input = document.querySelector<HTMLInputElement>('#search-input')
+  const formSearch = document.querySelector<HTMLFormElement>('#search-form')
 
-  input?.addEventListener('input', (event) => {
-    const searchText = event.target.value
+  formSearch?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const input = document.querySelector<HTMLInputElement>('#search-input')
+    const searchText = input?.value
 
     const pokemonDataFiltered = pokemonData.filter(pokemon => {
       return pokemon.name.includes(searchText)

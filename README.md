@@ -22,9 +22,12 @@ npm run dev
 
 ## Exercícios
 
-- Abstraia a criação de parágrafos e imagens no código de `index.ts`
-
-- Altere a aplicação para que os tipos de pokemon possam ter as cores corretas:
-    - grama => verde
-    - veneno => roxo
-    - fogo => laranja
+- ~~Abstraia a criação de parágrafos e imagens no código de `index.ts`~~
+- ~~Altere a aplicação para que os tipos de pokemon possam ter as cores corretas:~~
+- Adicione suporte a mais tipos de pokemon, por exemplo:
+  - eletric - yellow
+  - water - blue
+  ... Assim por diante, use a criatividade de vocês
+- Calcule o peso e a altura dos pokemon e exiba de acordo com o que está desenhado no [design](./screen.png)
+  - height -> está em decímetros, calcule para metros
+  - weight -> está em hectograms, calcule para quilos

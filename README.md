@@ -28,6 +28,6 @@ npm run dev
   - eletric - yellow
   - water - blue
   ... Assim por diante, use a criatividade de vocês
-- Calcule o peso e a altura dos pokemon e exiba de acordo com o que está desenhado no [design](./screen.png)
+- Calcule o peso e a altura dos pokemon e exiba de acordo com o que está desenhado no [design](./screen.png), deixando tais informações mais legíveis.
   - height -> está em decímetros, calcule para metros
   - weight -> está em hectograms, calcule para quilos

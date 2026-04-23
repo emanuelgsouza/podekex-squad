@@ -1,4 +1,4 @@
-import pokemonList from "./data";
+import pokemonData from "./data";
 import {
   createElement,
   createParagraph,
@@ -31,12 +31,12 @@ Para melhorar:
   - Altura está em decimetro
 */
 
-const main = () => {
+const listarPokemons = (pokemonList) => {
   const list = document.querySelector("#pokemons-list");
 
-  for (let index = 0; index < pokemonList.length; index++) {
-    const pokemon = pokemonList[index];
+  const fragment = document.createDocumentFragment();
 
+  pokemonList.forEach((pokemon, index) => {
     const pokemonCardIdentifier = createParagraph(`#${pokemon.id}`, {
       classList: ["pokemon-card-id"],
     });
@@ -66,15 +66,30 @@ const main = () => {
         pokemonCardFooter,
       ],
     });
-
-    const listElement = createElement("li", {
+    fragment.appendChild(createElement("li", {
       classList: ["pokemon-card-item", `pokemon-${pokemon.name}`],
       id: `pokemon-index-${index}`,
       childs: [pokemonCard],
-    });
+    }));
+  });
 
-    list?.appendChild(listElement);
-  }
+  list?.replaceChildren(fragment);
+}
+
+const main = () => {
+  const input = document.querySelector<HTMLInputElement>('#search-input')
+
+  input?.addEventListener('input', (event) => {
+    const searchText = event.target.value
+
+    const pokemonDataFiltered = pokemonData.filter(pokemon => {
+      return pokemon.name.includes(searchText)
+    })
+
+    listarPokemons(pokemonDataFiltered)
+  })
+
+  listarPokemons(pokemonData)
 };
 
 document.addEventListener("DOMContentLoaded", main);

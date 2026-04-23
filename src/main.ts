@@ -1,10 +1,16 @@
 import pokemonList from "./data";
-import { createElement } from "./dom";
+import {
+  createElement,
+  createParagraph,
+  createHeading,
+  createImg,
+} from "./dom";
 
 const createPokemonCardTypes = (pokemon) => {
   const childs = pokemon.types.map((row) => {
     return createElement("li", {
       textContent: row.type.name,
+      classList: [`--type-${row.type.name}`],
     });
   });
 
@@ -31,26 +37,17 @@ const main = () => {
   for (let index = 0; index < pokemonList.length; index++) {
     const pokemon = pokemonList[index];
 
-    const pokemonCardIdentifier = createElement("p", {
+    const pokemonCardIdentifier = createParagraph(`#${pokemon.id}`, {
       classList: ["pokemon-card-id"],
-      textContent: `#${pokemon.id}`,
     });
 
     const pokemonCardTypesElement = createPokemonCardTypes(pokemon);
-    const pokemonCardTitle = createElement("h3", {
-      textContent: pokemon.name,
-    });
+    const pokemonCardTitle = createHeading(pokemon.name);
 
-    const pokemanCardImage = createElement("img", {
-      src: pokemon.sprite.front_default,
-    });
+    const pokemanCardImage = createImg(pokemon.sprite.front_default);
 
-    const pokemonCardHeight = createElement("p", {
-      textContent: pokemon.height,
-    });
-    const pokemonCardWeight = createElement("p", {
-      textContent: pokemon.weight,
-    });
+    const pokemonCardHeight = createParagraph(pokemon.height);
+    const pokemonCardWeight = createParagraph(pokemon.weight);
 
     const pokemonCardHeader = createElement("header", {
       childs: [pokemonCardIdentifier, pokemonCardTypesElement],

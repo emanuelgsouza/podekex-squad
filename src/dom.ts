@@ -28,4 +28,28 @@ const createElement = (elName, opts: any = {}) => {
   return el;
 };
 
-export { createElement };
+const createParagraph = (textContent, opts: any = {}) => {
+  return createElement("p", {
+    textContent,
+    ...opts,
+  });
+};
+
+const createHeading = (textContent, level = 1, opts: any = {}) => {
+  level = Math.min(level < 1 ? 1 : level, 6);
+
+  const tag = `h${level}`;
+  return createElement(tag, {
+    textContent,
+    ...opts,
+  });
+};
+
+const createImg = (src, opts: any = {}) => {
+  return createElement("img", {
+    src,
+    ...opts,
+  });
+};
+
+export { createElement, createParagraph, createHeading, createImg };

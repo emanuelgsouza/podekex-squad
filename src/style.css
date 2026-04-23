@@ -128,10 +128,22 @@ html {
 
 .pokemon-card-types li {
   padding: 0.3rem;
-  background-color: green;
+  background-color: gray;
   color: var(--white);
   border-radius: 0.25rem;
   text-transform: uppercase;
+}
+
+.pokemon-card-types li.--type-grass {
+  background-color: green;
+}
+
+.pokemon-card-types li.--type-fire {
+  background-color: red;
+}
+
+.pokemon-card-types li.--type-poison {
+  background-color: purple;
 }
 
 .pokemon-card h3 {

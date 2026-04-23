@@ -94,12 +94,13 @@ const loadingPokemon = (pokemonList, delay = DELAY_DEFAULT) => {
   }, delay);
 };
 
-const filterPokemon = (searchText) => {
+const filterPokemon = (searchText?: string) => {
+  searchText = searchText?.trim() ?? "";
   const pokemonDataFiltered = pokemonData.filter((pokemon) => {
     return pokemon.name.includes(searchText);
   });
 
-  loadingPokemon(pokemonDataFiltered, 1000);
+  loadingPokemon(pokemonDataFiltered, DELAY_DEFAULT / 2);
 };
 
 export { filterPokemon, loadingPokemon };

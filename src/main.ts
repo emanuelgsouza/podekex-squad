@@ -13,7 +13,9 @@ const main = () => {
   FORM$?.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    filterPokemon(FORM_INPUT$?.value);
+    const searchText = FORM_INPUT$.value;
+
+    filterPokemon(searchText);
   });
 
   loadingPokemon(pokemonData);

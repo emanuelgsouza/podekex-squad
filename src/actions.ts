@@ -8,6 +8,19 @@ import pokemonData from "./data";
 import { POKEMON_LIST$, POKEMON_LOADING$ } from "./elements";
 
 const DELAY_DEFAULT = 2000;
+const HIDE_CLASS_HELPER = "--hide";
+
+const applyVisibility = (el, visible = true) => {
+  if (!el) {
+    return;
+  }
+
+  if (visible) {
+    el.classList.remove(HIDE_CLASS_HELPER);
+  } else {
+    el.classList.add(HIDE_CLASS_HELPER);
+  }
+};
 
 const createPokemonCardTypes = (pokemon) => {
   const childs = pokemon.types.map((row) => {
@@ -71,23 +84,13 @@ const listPokemon = (pokemonList) => {
 };
 
 const loadingPokemon = (pokemonList, delay = DELAY_DEFAULT) => {
-  if (POKEMON_LIST$) {
-    POKEMON_LIST$.hidden = true;
-  }
-
-  if (POKEMON_LOADING$) {
-    POKEMON_LOADING$.hidden = false;
-  }
+  applyVisibility(POKEMON_LIST$, false);
+  applyVisibility(POKEMON_LOADING$, true);
 
   setTimeout(() => {
     listPokemon(pokemonList);
-    if (POKEMON_LIST$) {
-      POKEMON_LIST$.hidden = false;
-    }
-
-    if (POKEMON_LOADING$) {
-      POKEMON_LOADING$.hidden = true;
-    }
+    applyVisibility(POKEMON_LIST$, true);
+    applyVisibility(POKEMON_LOADING$, false);
   }, delay);
 };
 

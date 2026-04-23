@@ -79,13 +79,13 @@ html {
   color: var(--accent-color);
 }
 
-#pokemons-list,
-#pokemons-list ul {
+#pokemon-list,
+#pokemon-list ul {
   padding: 0;
   list-style: none;
 }
 
-#pokemons-list {
+#pokemon-list {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;

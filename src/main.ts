@@ -24,15 +24,13 @@ const createPokemonCardTypes = (pokemon) => {
 
 /*
 Para melhorar:
-- Colocar cores por tipo
-- Refatorar código duplicado
 - Calcular altura e peso
   - Peso está em hectograma
   - Altura está em decimetro
 */
 
-const listarPokemons = (pokemonList) => {
-  const list = document.querySelector("#pokemons-list");
+const listPokemon = (pokemonList) => {
+  const list = document.querySelector("#pokemon-list");
 
   const fragment = document.createDocumentFragment();
 
@@ -76,6 +74,20 @@ const listarPokemons = (pokemonList) => {
   list?.replaceChildren(fragment);
 }
 
+const loadingPokemon = (pokemonList) => {
+  const element = document.querySelector<HTMLParagraphElement>('#pokemon-loading')!
+  const list = document.querySelector<HTMLUListElement>('#pokemon-list')!
+
+  list.hidden = true
+  element.hidden = false
+  
+  setTimeout(() => {
+    listPokemon(pokemonList)
+    list.hidden = false
+    element.hidden = true
+  }, 2000)
+}
+
 const main = () => {
   const formSearch = document.querySelector<HTMLFormElement>('#search-form')
 
@@ -88,10 +100,10 @@ const main = () => {
       return pokemon.name.includes(searchText)
     })
 
-    listarPokemons(pokemonDataFiltered)
+    loadingPokemon(pokemonDataFiltered)
   })
 
-  listarPokemons(pokemonData)
+  loadingPokemon(pokemonData)
 };
 
 document.addEventListener("DOMContentLoaded", main);

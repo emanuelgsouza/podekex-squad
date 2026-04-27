@@ -5,6 +5,7 @@ import {
   createImg,
 } from "./dom";
 import pokemonData from "./data";
+import { calculePokemonHeight, calculePokemonWeight } from "./calcules";
 import { POKEMON_LIST$, POKEMON_LOADING$ } from "./elements";
 
 const DELAY_DEFAULT = 2000;
@@ -51,8 +52,12 @@ const listPokemon = (pokemonList) => {
 
     const pokemanCardImage = createImg(pokemon.sprite.front_default);
 
-    const pokemonCardHeight = createParagraph(pokemon.height);
-    const pokemonCardWeight = createParagraph(pokemon.weight);
+    const pokemonCardHeight = createParagraph(
+      calculePokemonHeight(pokemon.height),
+    );
+    const pokemonCardWeight = createParagraph(
+      calculePokemonWeight(pokemon.weight),
+    );
 
     const pokemonCardHeader = createElement("header", {
       childs: [pokemonCardIdentifier, pokemonCardTypesElement],

@@ -1,4 +1,3 @@
-import { calculePokemonHeight, calculePokemonWeight } from "./calcules";
 import pokemonList from "./data/pokemon.json";
 
 /** Named resource link (PokéAPI `NamedAPIResource` shape for `type`). */

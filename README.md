@@ -1,33 +1,73 @@
-# Pokedex
+# React + TypeScript + Vite
 
-Clone este projeto no GitHub
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Depois do fork, clone o repositório em sua máquina usando o:
+Currently, two official plugins are available:
 
-```sh
-git clone ...
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-Com o repositório clonado, instale as dependências:
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```sh
-npm install
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-Com as dependências instaladas, execute o projeto:
-
-```sh
-npm run dev
-```
-
-## Exercícios
-
-- ~~Abstraia a criação de parágrafos e imagens no código de `index.ts`~~
-- ~~Altere a aplicação para que os tipos de pokemon possam ter as cores corretas:~~
-- Adicione suporte a mais tipos de pokemon, por exemplo:
-  - eletric - yellow
-  - water - blue
-  ... Assim por diante, use a criatividade de vocês
-- Calcule o peso e a altura dos pokemon e exiba de acordo com o que está desenhado no [design](./screen.png), deixando tais informações mais legíveis.
-  - height -> está em decímetros, calcule para metros
-  - weight -> está em hectograms, calcule para quilos

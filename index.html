@@ -1,62 +1,13 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-    rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Pokedex </title>
-
-  <style>
-    /* Para carregar a fonte mais rapidamente */
-    /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap'); */
-  </style>
-
-  <link rel="stylesheet" href="/src/reset.css">
-  <link rel="stylesheet" href="/src/style.css">
-</head>
-
-<body>
-  <div id="app">
-    <header class="header">
-      <div class="container">
-        <a class="header-link" href="/">
-          Pokedex
-        </a>
-
-        <form id="search-form" class="search-container">
-          <label for="search-input" class="visually-hidden">
-            Buscar pokemons por nome
-          </label>
-
-          <input name="search" id="search-input" type="text" placeholder="Buscar pokemons por nome" />
-
-          <button type="submit"> Buscar </button>
-        </form>
-      </div>
-    </header>
-
-    <section class="section">
-      <div class="container">
-        <h1 class="section-title">Arquivo de Espécimes</h1>
-
-        <p>
-          Acesse dados biológicos de alta fidelidade da fauna de Kanto. Selecione um espécime para ver estatísticas cinéticas detalhadas e trajetória evolutiva.
-        </p>
-
-        <h2 class="section-subtitle"> Região de Kanto // 001-151 </h2>
-
-        <ul id="pokemon-list"></ul>
-
-        <p id="pokemon-loading"> Carregando pokemon </p>
-      </div>
-    </section>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pokedex-react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+
 import { calculePokemonHeight, calculePokemonWeight } from "../calcules";
 import { type Pokemon } from "../data";
 
@@ -26,7 +28,10 @@ function PokemonCard({ pokemon }: PokemonCardArgs) {
         <p className="pokemon-card-id">{`#${pokemon.id}`}</p>
         <CardTypes pokemon={pokemon} />
       </header>
-      <h1>{pokemon.name}</h1>
+      <h1>
+        <NavLink to={`/detail/${pokemon.id}`}>{pokemon.name}</NavLink>
+      </h1>
+
       <img
         src={pokemon.sprite.front_default}
         alt={pokemon.name}

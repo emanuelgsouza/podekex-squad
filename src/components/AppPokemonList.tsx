@@ -1,7 +1,7 @@
 import { type Pokemon } from "../data";
 import PokemonCard from "./PokemonCard";
 
-interface PokemonListArgs {
+export interface PokemonListArgs {
   list: Pokemon[];
 }
 

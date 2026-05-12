@@ -1,15 +1,31 @@
 import { useState } from "react";
 
+const pokemonTypes = [
+  {
+    label: 'Grass',
+    value: 'grass'
+  },
+  {
+    label: 'Poison',
+    value: 'poison'
+  },
+  {
+    label: 'Water',
+    value: 'water'
+  }
+]
+
 interface AppHeaderArgs {
-  doSearch: (value: string) => void;
+  doSearch: (payload: { name: string, type: string }) => void;
 }
 
 function AppHeader({ doSearch }: AppHeaderArgs) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [type, setType] = useState("");
 
   function onSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-    doSearch(searchTerm);
+    doSearch({ name: searchTerm, type });
   }
 
   return (
@@ -31,6 +47,13 @@ function AppHeader({ doSearch }: AppHeaderArgs) {
             onChange={(event) => setSearchTerm(event.target.value)}
             placeholder="Buscar pokemons por nome"
           />
+
+          <select name="type" onChange={(event) => setType(event.target.value)}>
+            <option value=""> Pesquise por tipo </option>
+            {pokemonTypes.map((pokemonType, index) => {
+              return <option key={index} value={pokemonType.value}> {pokemonType.label} </option>
+            })}
+          </select>
 
           <button type="submit"> Buscar </button>
         </form>

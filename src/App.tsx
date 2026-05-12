@@ -11,11 +11,17 @@ import DetailPage from "./pages/Detail";
 function App() {
   const [pokemonList, setList] = useState([...pokemonListSource]);
 
-  function doSearch(value: string) {
-    const term = value.toLocaleLowerCase();
-    const list = pokemonListSource.filter((pokemon) => {
-      return pokemon.name.includes(term);
-    });
+  function doSearch({ name, type }: { name: string, type: string }) {
+    const term = name.toLocaleLowerCase();
+    const list = pokemonListSource
+      .filter((pokemon) => {
+        return pokemon.name.includes(term);
+      })
+      .filter((pokemon) => {
+        return pokemon.types.some((pokemonType) => {
+          return pokemonType.type.name === type
+        })
+      })
 
     setList(list);
   }
@@ -30,5 +36,8 @@ function App() {
     </>
   );
 }
+
+// App -> AppHeader
+//     -> AppPokemonList -> PokemonCard
 
 export default App;

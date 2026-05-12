@@ -14,15 +14,19 @@ function App() {
   function doSearch({ name, type }: { name: string, type: string }) {
     const term = name.toLocaleLowerCase();
     const list = pokemonListSource
-      .filter((pokemon) => {
-        return pokemon.name.includes(term);
-      })
-      .filter((pokemon) => {
+    .filter((pokemon) => {
+      return pokemon.name.includes(term);
+    })
+    .filter((pokemon) => {
+      if (type) {
         return pokemon.types.some((pokemonType) => {
           return pokemonType.type.name === type
         })
-      })
-
+      }
+      
+      return true
+    })
+    
     setList(list);
   }
 

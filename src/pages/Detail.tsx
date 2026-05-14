@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router";
+import { loadPokemonDetail } from "../services/pokemon";
 
 function DetailPage() {
   const [pokemon, setPokemon] = useState(null);
@@ -7,26 +8,21 @@ function DetailPage() {
   const [error, setError] = useState(null);
   const { id } = useParams();
 
-  const loadData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-
-      if (!response.ok) throw new Error("Pokémon não encontrado");
-
-      const data = await response.json();
-      setPokemon(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   // o useEffect será executado após a montagem do meu componente
   // ou quando a propriedade id for modificada
   useEffect(() => {
-    loadData();
+    if (id) {
+      loadPokemonDetail(id)
+        .then((pokemon) => {
+          setPokemon(pokemon)
+        })
+        .catch((err) => {
+          setError(err)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }
   }, [id]);
 
   if (loading) return <div className="loader">Buscando na grama alta...</div>;
